@@ -1,0 +1,39 @@
+{
+  "manifest_version": "0.2",
+  "name": "scotlis-mcp",
+  "version": "1.0.0",
+  "description": "Search Scottish property sale prices (ScotLIS) by postcode",
+  "long_description": "Queries ScotLIS (Registers of Scotland's public land register) for every registered title at a UK postcode and returns the sale date, price, and consideration for each. Covers Scotland only, and only titles on the Land Register.",
+  "author": {
+    "name": "Dart120",
+    "email": "irenitemi81@gmail.com",
+    "url": "https://github.com/Dart120"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dart120/scotlis-mcp"
+  },
+  "license": "MIT",
+  "server": {
+    "type": "python",
+    "entry_point": "server.py",
+    "mcp_config": {
+      "command": "${__dirname}/venv/bin/python3",
+      "args": [
+        "${__dirname}/server.py"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "name": "search_property_prices",
+      "description": "Search registered property sale prices in Scotland by postcode"
+    }
+  ],
+  "compatibility": {
+    "platforms": ["darwin"],
+    "runtimes": {
+      "python": ">=3.13"
+    }
+  }
+}

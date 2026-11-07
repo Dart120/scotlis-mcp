@@ -15,7 +15,13 @@ python3 scotlis_prices.py "EH1 1RE" --format csv > prices.csv
 python3 scotlis_prices.py "EH1 1RE" --format json
 ```
 
-## Use as an MCP server in Claude Desktop
+## Install as a Claude Desktop extension (one click, macOS only for now)
+
+Download `scotlis-mcp.mcpb` from the [latest release](https://github.com/Dart120/scotlis-mcp/releases/latest), then double-click it, or drag it into the Claude Desktop window, or use **Settings > Extensions > Advanced settings > Install Extension…**.
+
+This bundle embeds its own Python 3.13 runtime, so it works even if your Mac's system Python is older. It's currently built for macOS only — see [Build the extension bundle](#build-the-extension-bundle) to build one for another platform.
+
+## Use as an MCP server in Claude Desktop (manual config)
 
 Requires [uv](https://docs.astral.sh/uv/).
 
@@ -39,6 +45,15 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
 ```
 
 Restart Claude Desktop, and Claude will be able to call `search_property_prices` for any UK postcode.
+
+## Build the extension bundle
+
+```bash
+uv sync
+npm install -g @anthropic-ai/mcpb
+cp -R .venv venv   # bundles a real, self-contained interpreter — not a symlink
+mcpb pack . scotlis-mcp.mcpb
+```
 
 ## Disclaimer
 

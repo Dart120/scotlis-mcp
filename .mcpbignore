@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.python-version
+uv.lock
+pyproject.toml
+scotlis-mcp.mcpb
+venv/**/__pycache__/
