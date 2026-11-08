@@ -4,5 +4,6 @@
   "version": "1.0.0",
   "description": "Search registered property sale prices in Scotland by postcode, using the public ScotLIS (Registers of Scotland) search.",
   "author": { "name": "Dart120", "url": "https://github.com/Dart120" },
-  "license": "MIT"
+  "license": "MIT",
+  "icon": ".claude-plugin/icon.png"
 }

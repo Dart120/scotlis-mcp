@@ -6,7 +6,36 @@ Given a UK postcode, it returns every registered title at that address with its 
 
 Only covers Scotland, and only titles on the Land Register — older properties still on the Sasine Register may show no price.
 
+## Data
+
+Reads public ScotLIS listings for the postcode you give it and returns that result to Claude. Nothing is stored, logged, or sent anywhere else.
+
+## Install as a Claude plugin
+
+Search the plugin directory in Claude Code or on claude.ai for **ScotLIS Property Prices** and add it. This gives Claude the `search_property_prices` tool with no local setup.
+
+## Install as a Claude Desktop extension (one click, macOS only for now)
+
+Download `scotlis-mcp.mcpb` from the [latest release](https://github.com/Dart120/scotlis-mcp/releases/latest), then double-click it, drag it into the Claude Desktop window, or use **Settings > Extensions > Advanced settings > Install Extension…**. This bundle embeds its own Python 3.13 runtime, so it works even if your Mac's system Python is older.
+
+## Add manually to an MCP client
+
+Published on PyPI as [`scotlis-mcp`](https://pypi.org/project/scotlis-mcp/). With [uv](https://docs.astral.sh/uv/) installed, add this to your client's MCP server config:
+
+```json
+{
+  "mcpServers": {
+    "scotlis-prices": {
+      "command": "uvx",
+      "args": ["scotlis-mcp==1.0.0"]
+    }
+  }
+}
+```
+
 ## Use as a standalone CLI
+
+From a checkout of this repository:
 
 ```bash
 python3 scotlis_prices.py "EH1 1RE"
@@ -15,46 +44,10 @@ python3 scotlis_prices.py "EH1 1RE" --format csv > prices.csv
 python3 scotlis_prices.py "EH1 1RE" --format json
 ```
 
-## Install as a Claude Desktop extension (one click, macOS only for now)
-
-Download `scotlis-mcp.mcpb` from the [latest release](https://github.com/Dart120/scotlis-mcp/releases/latest), then double-click it, or drag it into the Claude Desktop window, or use **Settings > Extensions > Advanced settings > Install Extension…**.
-
-This bundle embeds its own Python 3.13 runtime, so it works even if your Mac's system Python is older. It's currently built for macOS only — see [Build the extension bundle](#build-the-extension-bundle) to build one for another platform.
-
-## Use as an MCP server in Claude Desktop (manual config)
-
-Requires [uv](https://docs.astral.sh/uv/).
-
-```bash
-git clone https://github.com/Dart120/scotlis-mcp.git
-cd scotlis-mcp
-uv sync
-```
-
-Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
-
-```json
-{
-  "mcpServers": {
-    "scotlis-prices": {
-      "command": "uv",
-      "args": ["--directory", "/absolute/path/to/scotlis-mcp", "run", "server.py"]
-    }
-  }
-}
-```
-
-Restart Claude Desktop, and Claude will be able to call `search_property_prices` for any UK postcode.
-
-## Build the extension bundle
-
-```bash
-uv sync
-npm install -g @anthropic-ai/mcpb
-cp -R .venv venv   # bundles a real, self-contained interpreter — not a symlink
-mcpb pack . scotlis-mcp.mcpb
-```
-
 ## Disclaimer
 
 Unofficial tool, not affiliated with Registers of Scotland. Queries ScotLIS's public search form directly — be a good citizen and don't hammer it.
+
+## Development
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for building and packaging this project from source.
