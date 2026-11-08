@@ -10,9 +10,18 @@ Only covers Scotland, and only titles on the Land Register — older properties 
 
 Reads public ScotLIS listings for the postcode you give it and returns that result to Claude. Nothing is stored, logged, or sent anywhere else.
 
-## Install as a Claude plugin
+## Install as a Claude Code plugin
 
-Search the plugin directory in Claude Code or on claude.ai for **ScotLIS Property Prices** and add it. This gives Claude the `search_property_prices` tool with no local setup.
+In Claude Code:
+
+```bash
+claude plugin marketplace add Dart120/scotlis-mcp
+claude plugin install scotlis-prices@scotlis-mcp
+```
+
+Or in one step, inside a session: `/plugin install scotlis-prices --marketplace Dart120/scotlis-mcp` (Claude Code v2.1.275+).
+
+This gives Claude the `search_property_prices` tool with no further setup. Works in Claude Code and Cowork; not Anthropic's central plugin directory (it's a local MCP server, which the directory currently only accepts from Verified organizations), so this is a self-hosted marketplace you add directly from this repo.
 
 ## Install as a Claude Desktop extension (one click, macOS only for now)
 

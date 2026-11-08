@@ -1,0 +1,8 @@
+{
+  "name": "scotlis-mcp",
+  "description": "ScotLIS property-price search for Claude",
+  "owner": { "name": "Dart120", "url": "https://github.com/Dart120" },
+  "plugins": [
+    { "name": "scotlis-prices", "source": "./" }
+  ]
+}
