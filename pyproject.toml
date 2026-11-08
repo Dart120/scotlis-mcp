@@ -1,9 +1,26 @@
 [project]
 name = "scotlis-mcp"
-version = "0.1.0"
+version = "1.0.0"
 description = "MCP server exposing ScotLIS (Registers of Scotland) property price search"
 readme = "README.md"
 requires-python = ">=3.13"
+license = "MIT"
+authors = [
+    { name = "Dart120", email = "irenitemi81@gmail.com" },
+]
 dependencies = [
     "mcp[cli]>=1.6.0,<2",
 ]
+
+[project.urls]
+Repository = "https://github.com/Dart120/scotlis-mcp"
+
+[project.scripts]
+scotlis-mcp = "server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["server.py", "scotlis_prices.py"]

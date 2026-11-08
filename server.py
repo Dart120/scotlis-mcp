@@ -75,5 +75,9 @@ def search_property_prices(
     }
 
 
-if __name__ == "__main__":
+def main() -> None:
     mcp.run()
+
+
+if __name__ == "__main__":
+    main()
