@@ -44,4 +44,4 @@ uv publish
 
 ## Plugin
 
-`.claude-plugin/plugin.json` and `.mcp.json` at the repository root make this a Claude plugin. The MCP server launches via `uv run --locked`, pinned against the committed `uv.lock`.
+`.claude-plugin/plugin.json` and `.mcp.json` at the repository root make this a Claude plugin. The MCP server launches via a version-pinned `uvx scotlis-mcp==<version>`; the committed `uv.lock` sits alongside it for hash/source verification. Bump both the pin in `.mcp.json` and `uv.lock` (`uv lock`) on every release.

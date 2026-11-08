@@ -1,14 +1,8 @@
 {
   "mcpServers": {
     "scotlis-prices": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        "${CLAUDE_PLUGIN_ROOT}",
-        "--locked",
-        "server.py"
-      ]
+      "command": "uvx",
+      "args": ["scotlis-mcp==1.0.0"]
     }
   }
 }
